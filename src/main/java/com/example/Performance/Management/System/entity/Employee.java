@@ -1,20 +1,15 @@
 package com.example.Performance.Management.System.entity;
 
-import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
-@Entity
+@Data
+@Document(collection = "employees") // Specify the collection name
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id; // MongoDB's default ID type is String
     private String name;
-    private String role;
-    private String department;
-
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private List<Goal> goals;
-
-    // Getters and Setters
+    private String designation;
+    private double salary;
 }

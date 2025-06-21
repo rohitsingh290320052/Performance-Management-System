@@ -1,21 +1,15 @@
 package com.example.Performance.Management.System.entity;
 
-import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Entity
+@Data
+@Document(collection = "goals")
 public class Goal {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
+    private String title;
     private String description;
-    private String status;
-    private String deadline;
-
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
-
-    // Getters and Setters
+    private String employeeId; // To associate the goal with an employee
 }
-
